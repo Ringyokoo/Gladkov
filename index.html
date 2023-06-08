@@ -7,7 +7,6 @@
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
-  <title>Образовательная страница</title>
   <style>
     body {
       display: flex;
@@ -211,10 +210,10 @@
 
   <div id="right">
     <div id="sidebar-resizer"></div>
-    <div id="content">
+    <div id="contentR">
       <h1>Наглядная демонстрация</h1>
       <p>Для демонстрации изменения периодов, возьмём условную модель Земли.</p>
-      <model-viewer src="untitled.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1"> </model-viewer>
+      <model-viewer id ="myModel" src="untitled.glb"> </model-viewer>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
@@ -224,17 +223,17 @@
     <script>
     const rightDiv = document.getElementById('right');
     const sidebar = document.getElementById('sidebar-resizer');
-    const content = document.getElementById('content');
+    const contentR = document.getElementById('contentR');
     
     sidebar.addEventListener('click', function() {
       if (rightDiv.style.width === '0px') {
         rightDiv.style.width = '50vw';
         sidebar.style.right = 'calc(50vw + 20px)';
-        content.style.display = 'inline';
+        contentR.style.display = 'inline';
       } else {
         rightDiv.style.width = '0px';
         sidebar.style.right = '20px';
-        content.style.display = 'none';
+        contentR.style.display = 'none';
       }
     });
 
@@ -244,6 +243,15 @@
       console.log(details.style.display);
       details.style.display = details.style.display === 'none'  ? 'block' : 'none';
     }
+
+    const modelViewer = document.getElementById('myModel');
+  
+  modelViewer.addEventListener('loaded', () => {
+    modelViewer.play();
+    modelViewer.addEventListener('animation-finish', () => {
+      modelViewer.pause();
+    });
+  });
   </script>
 </body>
 </html>
