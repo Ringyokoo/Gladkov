@@ -246,22 +246,21 @@
     const modelViewer = document.getElementById('myModel');
       const chek = document.querySelector("input");
   
-  modelViewer.addEventListener('loaded', () => {
-    modelViewer.play();
-    modelViewer.addEventListener('animation-finish', () => {
-      modelViewer.pause();
-    });
-  });
+//   modelViewer.addEventListener('loaded', () => {
+//     modelViewer.play();
+//     modelViewer.addEventListener('animation-finish', () => {
+//       modelViewer.pause();
+//     });
+//   });
 
    window.Anim = () => {
         if (chek.checked){
           modelViewer.play();
-    modelViewer.setInterval(() => {
-    modelViewer.pause();
-  }, 1500.0);
-    });
+          modelViewer.setInterval(() => {
+            modelViewer.pause();
+          }, 1500.0);
         }
-    }
+    });
   </script>
 </body>
 </html>
