@@ -256,8 +256,9 @@
    window.Anim = () => {
         if (chek.checked){
           modelViewer.play();
-    modelViewer.addEventListener('animation-finish', () => {
-      modelViewer.pause();
+    modelViewer.setInterval(() => {
+    modelViewer.pause();
+  }, 1500.0);
     });
         }
     }
