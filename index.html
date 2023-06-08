@@ -207,10 +207,16 @@
 
   <div id="right">
     <div id="sidebar-resizer"></div>
-    <div id="contentR" style="display:block">
+    <div id="contentR">
       <h1>Наглядная демонстрация</h1>
       <p>Для демонстрации изменения периодов, возьмём условную модель Земли.</p>
-      <model-viewer id ="myModel" src="untitled.glb"> </model-viewer>
+      <model-viewer id ="myModel" src="untitled.glb">
+      <span id="Cbox"> Анимация</span>
+            <br>
+            <label class="switch" onclick="Anim()">
+                <input type="checkbox">
+                <span class="slider1 round"></span>
+            </label> </model-viewer>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 
@@ -249,6 +255,10 @@
       modelViewer.pause();
     });
   });
+
+   window.Anim = () => {
+        (chek.checked) ? modelViewer.play() : modelViewer.pause();
+    }
   </script>
 </body>
 </html>
