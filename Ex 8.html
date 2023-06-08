@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+  <title>Образовательная страница</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: row;
+    }
+
+    #left {
+      flex: 2;
+      padding: 20px;
+    }
+
+    #right {
+/*      display: none;*/
+      /*flex: 1;
+      flex: 0em;*/
+      border-left: 2px solid black;;
+      padding-left: 20px;
+      background-color: #F8F8FF;
+      transition: margin-right 0.5s ease-in-out; /* Добавляем плавный переход */
+      width: 50vw;
+      margin-left: 5px;
+    }
+    #sidebar-resizer {
+      position: absolute;
+      top: 50%;
+      right: calc(50vw + 20px);
+/*      transform: translateY(-50%);*/
+      width: 20px;
+      height: 80px;
+      background-color: black;
+      /*cursor: ew-resize;
+      z-index: 2;*/
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /*img {
+      width: 200px;
+      height: 200px;
+      display: block;
+      margin-bottom: 20px;
+    }*/
+
+    #diagram {
+      text-align: center;
+      position: relative;
+    }
+
+    #axis {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background-color: black;
+      margin-left: -1px;
+    }
+
+    #arrow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      border-top: 2px solid black;
+      border-right: 2px solid black;
+      transform: rotate(-45deg);
+    }
+
+    #w-label {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      font-size: 12px;
+      transform: translateX(-50%);
+    }
+
+    #caption {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    #solution {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .fraction span {
+      display: block;
+      padding: 4px 0;
+    }
+
+    .fraction .numerator {
+      border-bottom: 1px solid #000;
+    }
+
+    .extra-content{
+      display: none;
+      padding: 20px;
+      background-color: #F5F5F5;
+    }
+
+    .expand-button {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /*.fraction .denominator {
+      border-bottom: 1px solid #000;
+    }*/
+  </style>
+</head>
+<body>
+  <div id="left">
+    <h1>Задача 8</h1>
+    <p>Имеется трехслойное тело (рис. 1) сферической формы, которое вращается в пространстве вокруг некоторой оси z с частотой w.</p>
+    <div id="diagram">
+      <svg width="300" height="300">
+        <circle cx="150" cy="150" r="100" fill="none" stroke="black"/>
+        <circle cx="150" cy="150" r="70" fill="none" stroke="black"/>
+        <circle cx="150" cy="150" r="40" fill="none" stroke="black"/>
+        <line x1="150" y1="20" x2="150" y2="300" stroke-dasharray="5" stroke="black"/>
+        <polygon points="150,10 155,20 145,20" fill="black"/>
+        <text x="150" y="-5" text-anchor="middle" id="w-label">w</text>
+      </svg>
+      <p id="caption">Рис. 1</p>
+    </div>
+    <p>Плотности слоев есть p1, p2, p3 с соответствующими радиусами R1, R2 и R3. Выяснить, как изменится период вращения, если окажется, что плотности p1 и p2 равны. В обоих случаях энергия сохраняется.</p>
+    <p id="solution">Решение</p>
+    <p>По определению, энергия вращательного движения записывается так:</p>
+    <img style="width: 80px;" src="Ef.png">
+    <!-- <p>  E =  <span class="fraction"><span class="numerator">(Jω<sup>2</sup>)</span><span class="denominator">2</span></span>,</p> -->
+    <p>где момент инерции тела J складывается в нашем случае из трех частей:</p>
+    <img style="width: 450px;" src="Jint.png">
+    <p>Если перейти теперь во всех трех интегралах в сферическую систему координат, то при условии, что плотности в каждой из областей постоянные, получим для каждого из интегралов:</p>
+    <p><img style="width: 400px;" src="Jf.png"></p>
+    <p><img style="width: 400px;" src="Js.png"></p>
+    <p><img style="width: 340px;" src="Jt.png"></p>
+    <button class="expand-button" onclick="MoreInf('details');">Подробнее</button>
+    <div class="extra-content" style="display: none;" id = "details">
+      <h3>Сферическая система координат:</h3>
+      <p>В данной системе координат точка M пространства определяется её расстоянием r  от начала координат и двумя углами:</p>
+      <img style="width: 500px;" src="Sphera.png">
+      <p>Угол θ («тета») называется зенитным и отсчитывается от положительной полуоси OZ.  Данный угол изменяется в пределах 0≤θ≤π и крайнему значению θ=π соответствуют точки, лежащие на нижней полуоси OZ.</p>
+      <p>Угол φ называется азимутальным и отсчитывается в плоскости  против часовой стрелки. Он изменяется в пределах 0≤φ≤2π, иными словами, «ведёт» себя точно так же, как полярный угол.
+      Таким образом, с помощью трёх координат «ро», «тета» и «фи» можно однозначно определить любую точку M(r,θ,φ)</p>
+      <p>Формулы перхода такова:</p>
+        <p>x = rsinθcosφ</p>
+        <p>y = rcosθsinφ</p>
+        <p>z = rcosθ</p>
+        <p>При этом dV = r<sup>2</sup>sinθ*dφdθdr</p>
+    </div>
+    <p>Следовательно, полная энергия вращающегося тела составит сумму</p>
+    <p><img style="width: 200px;" src="Es.png"></p>
+    <p><img style="width: 450px;" src="Et.png"></p>
+    <p>В случае, когда p1 = p2, но энергия E сохраняется (!), получаем </p>
+    <img style="width: 340px;" src="E4.png">
+    <p>где ω* – изменившаяся частота вращения.</p>
+    <p>Приравнивая выражения (1) и (2) и вспоминая, что частоты вращения связаны с периодом соотношениями</p>
+    <img style="width: 150px;" src="w.png">
+    <p>где T и T* - искомые периоды, находим, что</p>
+    <p><img style="width: 400px;" src="star.png"></p>
+    <button class="expand-button" onclick="MoreInf('details2');">Подробнее</button>
+    <div class="extra-content" style="display: none;" id = "details2">
+      <p>Заменяем ω и ω* на 1/T  и 1/T* , одновременно с этим сокращаем в (1) и (2) 2π/5, так как это одинаковые множители, получаем:</p>
+      <p><img style="width: 500px;" src="1.png"></p>
+      <p>Выражая Т* получаем как раз наш результат для p<sub>1</sub> = p<sub>2</sub></p>
+      <p><img style="width: 400px;" src="star.png"></p>
+      <p>Для случая p<sub>1</sub> = p<sub>3</sub> получаем:</p>
+      <p><img style="width: 400px;" src="13.png"> </p>
+      <p>Для случая p<sub>2</sub> = p<sub>3</sub> получаем:</p>
+      <p><img style="width: 400px;" src="23.png"> </p>
+      <p>Для случая p<sub>1</sub> = p<sub>2</sub> = p<sub>3</sub> получаем:</p>
+      <p><img style="width: 400px;" src="123.png"> </p>
+    </div>
+    <p>Задача решена. Заметим в заключение, что приведенный пример не является абстрактным, а имеет вполне реальный физический смысл. Речь идет о Земле. Структура Земли представляет собой чередование нескольких слоев: кора (плотность p1), верхняя мантия (плотность p2), нижняя мантия (плотность p3), жидкая магматическая субстанция (плотность p4), твердое ядро (плотность p5). В процессе остывания ядра произойдет постепенное выравнивание плотностей нижней мантии и магмы (p3 = p4), в результате чего период обращения изменится, причем, если p3 > p4,- в сторону уменьшения.</p>
+  </div>
+
+    
+
+  <div id="right">
+    <div id="sidebar-resizer"></div>
+    <div id="content">
+      <h1>Наглядная демонстрация</h1>
+      <p>Для демонстрации изменения периодов, возьмём условную модель Земли.</p>
+      <model-viewer src="untitled.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1" environment-image="spruit_sunrise_1k_HDR.hdr" exposure="1"> </model-viewer>
+
+    </div>
+    
+  </div>
+    <script>
+    const rightDiv = document.getElementById('right');
+    const sidebar = document.getElementById('sidebar-resizer');
+    const content = document.getElementById('content');
+    
+    rightDiv.addEventListener('click', function() {
+      if (rightDiv.style.width === '0px') {
+        rightDiv.style.width = '50vw';
+        sidebar.style.right = 'calc(50vw + 20px)';
+        content.style.display = 'inline';
+      } else {
+        rightDiv.style.width = '0px';
+        sidebar.style.right = '20px';
+        content.style.display = 'none';
+      }
+    });
+
+    function MoreInf(text){
+      // 
+      var details = document.getElementById(text);
+      console.log(details.style.display);
+      details.style.display = details.style.display === 'none'  ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
