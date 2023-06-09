@@ -163,12 +163,8 @@
       <p>В данной анимации показано вращение Земли вокруг оси проходящей сверху вниз. Анимация ускорена в 10 тысяч раз.</p>
       <p>Первая модель обладает периодом T, вторая Т*</p>
       <model-viewer id ="myModel" src="untitled.glb" orientation="0deg 0 40deg">
-      <span id="Cbox"> Анимация</span>
-            <br>
-            <label class="switch" onclick="Anim()">
-                <input type="checkbox">
-                <span class="slider1 round"></span>
-            </label> </model-viewer>
+      <button onclick="Anim()" class="expand-button">Начать анимацию</button>
+      </model-viewer>
     <model-viewer id ="myModel2" src="untitled.glb" orientation="0deg 0 40deg"> </model-viewer>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
     <p>Заметим, что вторая модель совершает оборот чуть быстрее первой. (Примерно в 1,044 раза)</p>
@@ -213,15 +209,10 @@
     const chek = document.querySelector("input");
   
 
-   window.Anim = () => {
-        if (chek.checked) {
+   fuction Anim(){
           modelViewer.play({repetitions: 1});
           modelViewer2.timeScale = 1.044;
           modelViewer2.play({repetitions: 1});
-        }else{
-          modelViewer.pause();
-          modelViewer2.pause();
-        }
     }
   </script>
 </body>
