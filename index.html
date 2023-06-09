@@ -164,7 +164,7 @@
       <p>Первая модель обладает периодом T, вторая Т*</p>
       <model-viewer id ="myModel" src="untitled.glb" orientation="0deg 0 40deg">
       <button onclick="Anim()" class="expand-button">Начать анимацию</button>
-        <button onclick="Anim365()" class="expand-button">Анимация на 365 дней</button>
+<!--         <button onclick="Anim365()" class="expand-button">Анимация на 365 дней</button> -->
       </model-viewer>
     <model-viewer id ="myModel2" src="untitled.glb" orientation="0deg 0 40deg"> </model-viewer>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
@@ -216,12 +216,12 @@
           modelViewer2.play({repetitions: 1});
     }
       
-      function Anim365(){
-          modelViewer.timeScale = 100;
-          modelViewer.play({repetitions: 365});
-          modelViewer2.timeScale = 1.044;
-          modelViewer2.play({repetitions: 1});
-    }
+//       function Anim365(){
+//           modelViewer.timeScale = 100;
+//           modelViewer.play({repetitions: 30});
+//           modelViewer2.timeScale = 1.044;
+//           modelViewer2.play({repetitions: 1});
+//     }
   </script>
 </body>
 </html>
