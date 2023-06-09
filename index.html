@@ -254,7 +254,11 @@
 //   });
 
    window.Anim = () => {
-        (chek.checked) ? modelViewer.play() : modelViewer.pause();
+        if (chek.checked) {
+          modelViewer.play({repetitions: 1});
+        }else{
+          modelViewer.pause();
+        }
     }
    
     modelViewer.addEventListener('finished', play);
