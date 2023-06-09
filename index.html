@@ -254,13 +254,10 @@
 //   });
 
    window.Anim = () => {
-        if (chek.checked){
-          modelViewer.play();
-          modelViewer.setInterval(() => {
-            modelViewer.pause();
-          }, 1500.0);
-        }
+        (chek.checked) ? modelViewer.play() : modelViewer.pause();
     }
+   
+    modelViewer.addEventListener('finished', play);
   </script>
 </body>
 </html>
