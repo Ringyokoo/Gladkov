@@ -251,7 +251,8 @@
     }
 
     const modelViewer = document.getElementById('myModel');
-      const chek = document.querySelector("input");
+    const modelViewer2 = document.getElementById('myModel2');
+    const chek = document.querySelector("input");
   
 //   modelViewer.addEventListener('loaded', () => {
 //     modelViewer.play();
@@ -263,8 +264,11 @@
    window.Anim = () => {
         if (chek.checked) {
           modelViewer.play({repetitions: 1});
+          modelViewer2.timeScale = 1.04;
+          modelViewer2.play({repetitions: 1});
         }else{
           modelViewer.pause();
+          modelViewer2.pause();
         }
     }
   </script>
