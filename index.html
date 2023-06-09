@@ -151,6 +151,8 @@
     <div id="contentR">
       <h1>Наглядная демонстрация</h1>
       <p>Для демонстрации изменения периодов, возьмём условную модель Земли.</p>
+      <p>В данной анимации показано вращение Земли вокруг оси проходящей сверху вниз. Анимация ускорена в 10 тысяч раз.</p>
+      <p>Первая модель обладает периодом T, вторая Т*</p>
       <model-viewer id ="myModel" src="untitled.glb" orientation="0deg 0 40deg">
       <span id="Cbox"> Анимация</span>
             <br>
@@ -160,6 +162,8 @@
             </label> </model-viewer>
     <model-viewer id ="myModel2" src="untitled.glb" orientation="0deg 0 40deg"> </model-viewer>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <p>Заметим, что вторая модель совершает оборот чуть быстрее первой. (Примерно в 1,044 раза)</p>
+      <h3>Расчеты:</h3>
     <p>Возьмем данные показатели:</p>
     <p>Мантия p1= 4400 кг/м3, R1= 6371км</p>
     <p>Внешнее ядро p2 = 12600 кг/м3, R2 = 3471км</p>
@@ -203,7 +207,7 @@
    window.Anim = () => {
         if (chek.checked) {
           modelViewer.play({repetitions: 1});
-          modelViewer2.timeScale = 1.04;
+          modelViewer2.timeScale = 1.044;
           modelViewer2.play({repetitions: 1});
         }else{
           modelViewer.pause();
