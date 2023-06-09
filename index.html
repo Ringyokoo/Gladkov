@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Задача 8</title>
     <meta charset="utf-8">
+  <link rel="shortcut icon" href="icon.png" type="image/png">
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
@@ -23,19 +24,17 @@
       padding-left: 20px;
       background-color: #F8F8FF;
       transition: margin-right 0.5s ease-in-out; /* Добавляем плавный переход */
-      width: 50vw;
+      width: 0px;
       margin-left: 5px;
     }
     #sidebar-resizer {
       position: absolute;
       top: 50%;
-      right: calc(50vw + 20px);
-/*      transform: translateY(-50%);*/
+      right: 20px;
       width: 20px;
       height: 80px;
       background-color: black;
-      /*cursor: ew-resize;
-      z-index: 2;*/
+
     }
 
     h1 {
@@ -47,55 +46,7 @@
       line-height: 1.5;
     }
 
-    /*img {
-      width: 200px;
-      height: 200px;
-      display: block;
-      margin-bottom: 20px;
-    }*/
-
-    #diagram {
-      text-align: center;
-      position: relative;
-    }
-
-    #axis {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background-color: black;
-      margin-left: -1px;
-    }
-
-    #arrow {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      margin-left: -5px;
-      border-top: 2px solid black;
-      border-right: 2px solid black;
-      transform: rotate(-45deg);
-    }
-
-    #w-label {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      font-size: 12px;
-      transform: translateX(-50%);
-    }
-
-    #caption {
-      text-align: center;
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 12px;
-    }
-
+    
     #solution {
       font-weight: bold;
       font-size: 20px;
@@ -137,17 +88,7 @@
   <div id="left">
     <h1>Задача 8</h1>
     <p>Имеется трехслойное тело (рис. 1) сферической формы, которое вращается в пространстве вокруг некоторой оси z с частотой w.</p>
-    <div id="diagram">
-      <svg width="300" height="300">
-        <circle cx="150" cy="150" r="100" fill="none" stroke="black"/>
-        <circle cx="150" cy="150" r="70" fill="none" stroke="black"/>
-        <circle cx="150" cy="150" r="40" fill="none" stroke="black"/>
-        <line x1="150" y1="20" x2="150" y2="300" stroke-dasharray="5" stroke="black"/>
-        <polygon points="150,10 155,20 145,20" fill="black"/>
-        <text x="150" y="-5" text-anchor="middle" id="w-label">w</text>
-      </svg>
-      <p id="caption">Рис. 1</p>
-    </div>
+    <img id="img1" src="img1.png" style="width: 300px;">
     <p>Плотности слоев есть p1, p2, p3 с соответствующими радиусами R1, R2 и R3. Выяснить, как изменится период вращения, если окажется, что плотности p1 и p2 равны. В обоих случаях энергия сохраняется.</p>
     <p id="solution">Решение</p>
     <p>По определению, энергия вращательного движения записывается так:</p>
@@ -232,7 +173,7 @@
     const contentR = document.getElementById('contentR');
     
     sidebar.addEventListener('click', function() {
-      if (rightDiv.style.width === '0px') {
+      if (rightDiv.style.width == '0px' || !rightDiv.style.width) {
         rightDiv.style.width = '50vw';
         sidebar.style.right = 'calc(50vw + 20px)';
         contentR.style.display = 'inline';
